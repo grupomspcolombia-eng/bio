@@ -1,1 +1,340 @@
-hola esto es una prueba
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Pastrana | Links</title>
+  <meta name="description" content="Enlaces oficiales de Maison Pastrana" />
+  <meta property="og:title" content="Maison Pastrana" />
+  <meta property="og:description" content="Enlaces oficiales de Maison Pastrana" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #04040a;
+      --wa: #25d366;
+      --ig: #e1306c;
+      --web: #22d3ee;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px;
+      font-family: "Sora", system-ui, sans-serif;
+      color: #f2f4ff;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      animation: float 15s ease-in-out infinite;
+    }
+
+    .orb-1 { width: 440px; height: 440px; background: #7c3aed; top: -140px; left: -120px; opacity: .5; }
+    .orb-2 { width: 400px; height: 400px; background: #06b6d4; bottom: -150px; right: -110px; opacity: .45; animation-delay: -6s; }
+    .orb-3 { width: 300px; height: 300px; background: #ec4899; top: 38%; left: 58%; opacity: .3; animation-delay: -10s; }
+
+    .grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+      background-size: 46px 46px;
+      -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 10%, transparent 78%);
+      mask-image: radial-gradient(circle at 50% 42%, #000 10%, transparent 78%);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      width: min(430px, 100%);
+      padding: 46px 28px 28px;
+      border-radius: 28px;
+      background: rgba(11, 11, 22, .6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, .08);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, .65), inset 0 1px 0 rgba(255, 255, 255, .07);
+      text-align: center;
+      animation: rise .8s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 1.5px;
+      background: linear-gradient(140deg, rgba(34, 211, 238, .55), transparent 32%, transparent 68%, rgba(168, 85, 247, .55));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .avatar {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+    }
+
+    .avatar::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #22d3ee, #a855f7, #ec4899, #f59e0b, #22d3ee);
+      animation: spin 5s linear infinite;
+      filter: blur(.4px);
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, .22);
+      animation: spin 22s linear infinite reverse;
+    }
+
+    .avatar-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 32% 28%, #1d1c33, #0a0a14 70%);
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: 1px;
+      background-clip: padding-box;
+      box-shadow: inset 0 0 0 4px rgba(6, 6, 14, 1);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, .1);
+      border: 1px solid rgba(34, 211, 238, .35);
+      color: #a5f3fc;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      animation: rise .8s .12s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 10px #22d3ee;
+      animation: blink 1.6s ease-in-out infinite;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(30px, 8vw, 38px);
+      font-weight: 800;
+      letter-spacing: -.5px;
+      background: linear-gradient(100deg, #67e8f9 0%, #e9d5ff 45%, #f9a8d4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rise .8s .2s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .tagline {
+      margin-top: 10px;
+      color: #9ba3c7;
+      font-size: 14.5px;
+      line-height: 1.55;
+      animation: rise .8s .28s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      --glow: var(--wa);
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      color: #fff;
+      text-decoration: none;
+      font-size: 15.5px;
+      font-weight: 600;
+      overflow: hidden;
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+      animation: rise .7s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .btn:nth-child(1) { --glow: var(--wa); animation-delay: .36s; }
+    .btn:nth-child(2) { --glow: var(--ig); animation-delay: .46s; }
+    .btn:nth-child(3) { --glow: var(--web); animation-delay: .56s; }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, .08);
+      border-color: color-mix(in srgb, var(--glow) 55%, transparent);
+      box-shadow: 0 16px 34px -12px color-mix(in srgb, var(--glow) 65%, transparent);
+    }
+
+    .btn:active { transform: translateY(-1px) scale(.99); }
+
+    .btn .ico {
+      width: 44px;
+      height: 44px;
+      flex: none;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      color: var(--glow);
+      background: color-mix(in srgb, var(--glow) 16%, transparent);
+      border: 1px solid color-mix(in srgb, var(--glow) 34%, transparent);
+      transition: box-shadow .3s ease;
+    }
+
+    .btn:hover .ico { box-shadow: 0 0 18px -4px color-mix(in srgb, var(--glow) 80%, transparent); }
+
+    .btn .txt { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
+    .btn .txt small { font-size: 11.5px; font-weight: 400; color: #8f97bd; }
+
+    .btn .arrow {
+      margin-left: auto;
+      color: var(--glow);
+      opacity: .55;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .btn:hover .arrow { transform: translateX(5px); opacity: 1; }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .16), transparent);
+      transform: skewX(-20deg);
+      transition: left .55s ease;
+    }
+
+    .btn:hover::after { left: 130%; }
+
+    footer {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      color: #6d749a;
+      font-size: 12px;
+      letter-spacing: .4px;
+      animation: rise .7s .66s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    footer span { color: #a5f3fc; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(26px) scale(.97); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(34px, -30px) scale(1.06); }
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .35; }
+    }
+
+    @media (max-width: 380px) {
+      .card { padding: 38px 20px 22px; }
+      .btn { padding: 13px 14px; gap: 12px; }
+      .btn .ico { width: 40px; height: 40px; font-size: 19px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid"></div>
+
+  <main class="card">
+    <div class="avatar">
+      <div class="avatar-inner">MP</div>
+    </div>
+
+    <div class="badge"><span class="dot"></span> Cuenta oficial</div>
+
+    <h1>Maison Pastrana</h1>
+    <p class="tagline">Bienvenido. Elige un enlace y conecta con nosotros.</p>
+
+    <nav class="links">
+      <a class="btn" href="https://wa.me/5730000000000" target="_blank" rel="noopener">
+        <span class="ico"><i class="fa-brands fa-whatsapp"></i></span>
+        <span class="txt">WhatsApp <small>Escríbenos al instante</small></span>
+        <i class="fa-solid fa-arrow-right arrow"></i>
+      </a>
+
+      <a class="btn" href="https://www.instagram.com/maisonpastrana" target="_blank" rel="noopener">
+        <span class="ico"><i class="fa-brands fa-instagram"></i></span>
+        <span class="txt">Instagram <small>@maisonpastrana</small></span>
+        <i class="fa-solid fa-arrow-right arrow"></i>
+      </a>
+
+      <a class="btn" href="https://www.maisonpastrana.com" target="_blank" rel="noopener">
+        <span class="ico"><i class="fa-solid fa-globe"></i></span>
+        <span class="txt">Sitio web <small>maisonpastrana.com</small></span>
+        <i class="fa-solid fa-arrow-right arrow"></i>
+      </a>
+    </nav>
+
+    <footer>© 2026 <span>Maison Pastrana</span> · Todos los derechos reservados</footer>
+  </main>
+</body>
+</html>
