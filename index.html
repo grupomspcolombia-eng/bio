@@ -2,7 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#04040a" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Maison Pastrana | Links</title>
   <meta name="description" content="Enlaces oficiales de Maison Pastrana" />
   <meta property="og:title" content="Maison Pastrana" />
@@ -10,6 +15,7 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="image" href="assets/bg.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
@@ -29,23 +35,24 @@
       min-height: 100dvh;
       display: grid;
       place-items: center;
-      padding: 28px 18px;
+      padding-top: max(28px, env(safe-area-inset-top));
+      padding-bottom: max(28px, env(safe-area-inset-bottom));
+      padding-left: max(18px, env(safe-area-inset-left));
+      padding-right: max(18px, env(safe-area-inset-right));
       font-family: "Sora", system-ui, sans-serif;
       color: #f2f4ff;
       background-color: var(--bg);
-      background-image: url("assets/bg.jpg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      background-attachment: fixed;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: rgba(34, 211, 238, .25);
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: linear-gradient(180deg, rgba(4, 4, 10, .5), rgba(4, 4, 10, .72));
+      background:
+        linear-gradient(180deg, rgba(4, 4, 10, .5), rgba(4, 4, 10, .72)),
+        url("assets/bg.jpg") center top / cover no-repeat;
       z-index: -1;
       pointer-events: none;
     }
@@ -198,6 +205,18 @@
       animation: rise .7s .34s cubic-bezier(.2, .8, .2, 1) both;
     }
 
+    .carousel::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 56px;
+      background: linear-gradient(0deg, rgba(3, 3, 9, .68), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .track {
       display: flex;
       overflow-x: auto;
@@ -288,6 +307,7 @@
     }
 
     .dots .dot {
+      position: relative;
       width: 7px;
       height: 7px;
       padding: 0;
@@ -296,6 +316,12 @@
       background: rgba(255, 255, 255, .45);
       cursor: pointer;
       transition: width .3s ease, background .3s ease;
+    }
+
+    .dots .dot::after {
+      content: "";
+      position: absolute;
+      inset: -14px;
     }
 
     .dots .dot[aria-selected="true"] {
@@ -421,6 +447,21 @@
       .card { padding: 38px 20px 22px; }
       .btn { padding: 13px 14px; gap: 12px; }
       .btn .ico { width: 40px; height: 40px; font-size: 19px; }
+      .avatar { width: 94px; height: 94px; }
+      .avatar-inner { font-size: 30px; }
+      .links { margin-top: 26px; gap: 12px; }
+      .carousel { margin-top: 22px; }
+    }
+
+    @media (max-height: 720px) {
+      .card { padding-top: 34px; }
+      .avatar { width: 88px; height: 88px; margin-bottom: 14px; }
+      .avatar-inner { font-size: 28px; }
+      h1 { margin-top: 12px; }
+      .tagline { margin-top: 8px; }
+      .carousel { margin-top: 20px; }
+      .links { margin-top: 24px; gap: 12px; }
+      footer { margin-top: 22px; padding-top: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -514,8 +555,11 @@
       sync();
     }
 
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     function play() {
       stop();
+      if (reduceMotion) return;
       timer = setInterval(() => go(current + 1, true), 4000);
     }
 
