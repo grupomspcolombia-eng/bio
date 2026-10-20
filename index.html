@@ -32,8 +32,22 @@
       padding: 28px 18px;
       font-family: "Sora", system-ui, sans-serif;
       color: #f2f4ff;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image: url("assets/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4, 4, 10, .5), rgba(4, 4, 10, .72));
+      z-index: -1;
+      pointer-events: none;
     }
 
     .orb {
@@ -44,21 +58,9 @@
       animation: float 15s ease-in-out infinite;
     }
 
-    .orb-1 { width: 440px; height: 440px; background: #7c3aed; top: -140px; left: -120px; opacity: .5; }
-    .orb-2 { width: 400px; height: 400px; background: #06b6d4; bottom: -150px; right: -110px; opacity: .45; animation-delay: -6s; }
-    .orb-3 { width: 300px; height: 300px; background: #ec4899; top: 38%; left: 58%; opacity: .3; animation-delay: -10s; }
-
-    .grid {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
-      background-size: 46px 46px;
-      -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 10%, transparent 78%);
-      mask-image: radial-gradient(circle at 50% 42%, #000 10%, transparent 78%);
-      pointer-events: none;
-    }
+    .orb-1 { width: 440px; height: 440px; background: #7c3aed; top: -140px; left: -120px; opacity: .22; }
+    .orb-2 { width: 400px; height: 400px; background: #06b6d4; bottom: -150px; right: -110px; opacity: .2; animation-delay: -6s; }
+    .orb-3 { width: 300px; height: 300px; background: #ec4899; top: 38%; left: 58%; opacity: .14; animation-delay: -10s; }
 
     .card {
       position: relative;
@@ -430,7 +432,6 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
-  <div class="grid"></div>
 
   <main class="card">
     <div class="avatar">
