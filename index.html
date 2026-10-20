@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#04040a" />
+  <meta name="theme-color" content="#000000" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
     :root {
-      --bg: #04040a;
+      --bg: #000000;
       --wa: #25d366;
       --ig: #e1306c;
       --web: #22d3ee;
@@ -51,30 +51,19 @@
       position: fixed;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(4, 4, 10, .5), rgba(4, 4, 10, .72)),
+        linear-gradient(180deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, .72)),
         url("assets/bg.jpg") center top / cover no-repeat;
       z-index: -1;
       pointer-events: none;
     }
 
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      animation: float 15s ease-in-out infinite;
-    }
-
-    .orb-1 { width: 440px; height: 440px; background: #7c3aed; top: -140px; left: -120px; opacity: .22; }
-    .orb-2 { width: 400px; height: 400px; background: #06b6d4; bottom: -150px; right: -110px; opacity: .2; animation-delay: -6s; }
-    .orb-3 { width: 300px; height: 300px; background: #ec4899; top: 38%; left: 58%; opacity: .14; animation-delay: -10s; }
 
     .card {
       position: relative;
       width: min(430px, 100%);
       padding: 46px 28px 28px;
       border-radius: 28px;
-      background: rgba(11, 11, 22, .6);
+      background: rgba(0, 0, 0, .62);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, .08);
@@ -133,12 +122,12 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: radial-gradient(circle at 32% 28%, #1d1c33, #0a0a14 70%);
+      background: radial-gradient(circle at 32% 28%, #202020, #070707 70%);
       font-weight: 800;
       font-size: 34px;
       letter-spacing: 1px;
       background-clip: padding-box;
-      box-shadow: inset 0 0 0 4px rgba(6, 6, 14, 1);
+      box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 1);
       overflow: hidden;
     }
 
@@ -212,7 +201,7 @@
       right: 0;
       bottom: 0;
       height: 56px;
-      background: linear-gradient(0deg, rgba(3, 3, 9, .68), transparent);
+      background: linear-gradient(0deg, rgba(0, 0, 0, .7), transparent);
       pointer-events: none;
       z-index: 1;
     }
@@ -277,7 +266,7 @@
       display: grid;
       place-items: center;
       border: 1px solid rgba(255, 255, 255, .2);
-      background: rgba(5, 5, 14, .6);
+      background: rgba(0, 0, 0, .62);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       color: #fff;
@@ -431,10 +420,6 @@
       to { opacity: 1; transform: none; }
     }
 
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(34px, -30px) scale(1.06); }
-    }
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -470,9 +455,6 @@
   </style>
 </head>
 <body>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
 
   <main class="card">
     <div class="avatar">
