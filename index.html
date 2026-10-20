@@ -130,6 +130,15 @@
       letter-spacing: 1px;
       background-clip: padding-box;
       box-shadow: inset 0 0 0 4px rgba(6, 6, 14, 1);
+      overflow: hidden;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
     }
 
     .badge {
@@ -175,6 +184,125 @@
       font-size: 14.5px;
       line-height: 1.55;
       animation: rise .8s .28s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .carousel {
+      position: relative;
+      margin-top: 26px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .03);
+      animation: rise .7s .34s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .track::-webkit-scrollbar { display: none; }
+
+    .slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      aspect-ratio: 4 / 3;
+      position: relative;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-quote {
+      display: grid;
+      place-content: center;
+      gap: 12px;
+      padding: 28px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(34, 211, 238, .16), rgba(168, 85, 247, .22), rgba(236, 72, 153, .16));
+    }
+
+    .slide-quote blockquote {
+      font-size: clamp(17px, 4.6vw, 21px);
+      font-weight: 700;
+      line-height: 1.4;
+      background: linear-gradient(100deg, #67e8f9, #e9d5ff, #f9a8d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .slide-quote span {
+      color: #9ba3c7;
+      font-size: 11.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(5, 5, 14, .6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .3s ease, background .3s ease;
+      z-index: 2;
+    }
+
+    .carousel:hover .nav,
+    .carousel:focus-within .nav { opacity: 1; }
+
+    .nav:hover { background: rgba(34, 211, 238, .3); }
+    .nav.prev { left: 10px; }
+    .nav.next { right: 10px; }
+
+    .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      z-index: 2;
+    }
+
+    .dots .dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: 0;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .45);
+      cursor: pointer;
+      transition: width .3s ease, background .3s ease;
+    }
+
+    .dots .dot[aria-selected="true"] {
+      width: 22px;
+      background: linear-gradient(90deg, #22d3ee, #a855f7);
+    }
+
+    @media (hover: none) {
+      .nav { display: none; }
     }
 
     .links {
@@ -306,18 +434,36 @@
 
   <main class="card">
     <div class="avatar">
-      <div class="avatar-inner">MP</div>
+      <div class="avatar-inner"><img src="assets/logo.png" alt="Maison Pastrana" /></div>
     </div>
 
     <div class="badge"><span class="dot"></span> Cuenta oficial</div>
 
     <h1>Maison Pastrana</h1>
-    <p class="tagline">Bienvenido. Elige un enlace y conecta con nosotros.</p>
+    <p class="tagline">Para los momentos donde no puedes fallar</p>
+
+    <div class="carousel" aria-roledescription="carrusel">
+      <div class="track">
+        <figure class="slide">
+          <img src="assets/slide-1.webp" alt="Maison Pastrana" />
+        </figure>
+        <figure class="slide">
+          <img src="assets/slide-2.webp" alt="Maison Pastrana" />
+        </figure>
+        <figure class="slide slide-quote">
+          <blockquote>“Para los momentos donde no puedes fallar”</blockquote>
+          <span>Maison Pastrana</span>
+        </figure>
+      </div>
+      <button class="nav prev" type="button" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="nav next" type="button" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="dots" role="tablist" aria-label="Slides"></div>
+    </div>
 
     <nav class="links">
-      <a class="btn" href="https://wa.me/5730000000000" target="_blank" rel="noopener">
+      <a class="btn" href="https://wa.me/573243715818" target="_blank" rel="noopener">
         <span class="ico"><i class="fa-brands fa-whatsapp"></i></span>
-        <span class="txt">WhatsApp <small>Escríbenos al instante</small></span>
+        <span class="txt">WhatsApp <small>+57 324 371 5818</small></span>
         <i class="fa-solid fa-arrow-right arrow"></i>
       </a>
 
@@ -336,5 +482,66 @@
 
     <footer>© 2026 <span>Maison Pastrana</span> · Todos los derechos reservados</footer>
   </main>
+
+  <script>
+    const car = document.querySelector(".carousel");
+    const track = car.querySelector(".track");
+    const slides = Array.from(track.children);
+    const dotsBox = car.querySelector(".dots");
+    let current = 0;
+    let timer;
+
+    slides.forEach((_, i) => {
+      const b = document.createElement("button");
+      b.className = "dot";
+      b.type = "button";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-label", "Slide " + (i + 1));
+      b.addEventListener("click", () => go(i, true));
+      dotsBox.appendChild(b);
+    });
+
+    const dots = Array.from(dotsBox.children);
+
+    function sync() {
+      dots.forEach((d, i) => d.setAttribute("aria-selected", i === current ? "true" : "false"));
+    }
+
+    function go(i, smooth) {
+      current = (i + slides.length) % slides.length;
+      track.scrollTo({ left: track.clientWidth * current, behavior: smooth ? "smooth" : "auto" });
+      sync();
+    }
+
+    function play() {
+      stop();
+      timer = setInterval(() => go(current + 1, true), 4000);
+    }
+
+    function stop() {
+      clearInterval(timer);
+    }
+
+    car.querySelector(".prev").addEventListener("click", () => go(current - 1, true));
+    car.querySelector(".next").addEventListener("click", () => go(current + 1, true));
+
+    track.addEventListener("scroll", () => {
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== current && i >= 0 && i < slides.length) {
+        current = i;
+        sync();
+      }
+    }, { passive: true });
+
+    car.addEventListener("mouseenter", stop);
+    car.addEventListener("mouseleave", play);
+    car.addEventListener("touchstart", stop, { passive: true });
+    car.addEventListener("touchend", play, { passive: true });
+    window.addEventListener("resize", () => go(current, false));
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
+
+    sync();
+    play();
+  </script>
 </body>
 </html>
