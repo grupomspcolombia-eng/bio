@@ -1,4 +1,4 @@
+# La página de links (bio) no debe indexarse: el SEO vive en https://maisonpastrana.com/
+# Se permite el rastreo para que Google lea la directiva noindex del <head>.
 User-agent: *
 Allow: /
-
-Sitemap: https://bio.maisonpastrana.com/sitemap.xml
